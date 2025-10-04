@@ -1463,6 +1463,8 @@ int main()
 // }
 
 #include<stdio.h>
-int nthnum(int a,int d)
+int nthnum(int a,int d,int n)
 {
+    if(n==1)return a;
+    return a+nthnum(a+d);
 }

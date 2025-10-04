@@ -1462,9 +1462,45 @@ int main()
 //     else printf("Not found");
 // }
 
-#include<stdio.h>
-int nthnum(int a,int d,int n)
-{
-    if(n==1)return a;
-    return a+nthnum(a+d);
-}
+// #include<stdio.h>
+// int nthnum(int a,int d,int n)
+// {
+//     if(n==1)return a;
+//     return d+nthnum(a,d,n-1);
+// }
+// int sum(int a,int d,int n)
+// {
+//     if(n==1)return a;
+//     else return (a+(n-1)*d)+sum(a,d,n-1);
+// }
+// int main()
+// {
+//     int a=3,d=2,n=2;
+//     int r=nthnum(a,d,n);
+//     printf("%d\n",r);
+//     printf("%d\n",sum(a,d,n));
+// }
+
+// #include<stdio.h>
+// int rtol(int n)
+// {
+//     if(n<10)return n;
+//     int s=n%10;
+//     printf("%d",s);
+//     return rtol(n/10);
+// }
+// int ltor(int n)
+// {
+//     if(n<10)
+//     {
+//         printf("%d",n);
+//         return;
+//     }
+//     ltor(n/10);
+//     printf("%d",n%10);
+// }
+// int main()
+// {
+//     printf("%d\n",rtol(12345));
+//     printf("%d\n",ltor(12345));
+// }

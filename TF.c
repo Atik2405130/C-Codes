@@ -1504,3 +1504,18 @@ int main()
 //     printf("%d\n",rtol(12345));
 //     printf("%d\n",ltor(12345));
 // }
+
+// #include<stdio.h>
+// int max(int arr[],int n)
+// {
+//     if(n==1)return arr[0];
+//     int maxv=max(arr+1,n-1);
+//     return (maxv>arr[0]?maxv:arr[0]);
+// }
+// int main()
+// {
+//     int array[5]={1,2,3,4,5};
+//     int x=max(array,5);
+//     printf("%d",x);
+// }
+

@@ -1664,44 +1664,386 @@ int main()
 //     printf("%s has got worst marks , worst mark :%d",worst,worstm);
 // }
 
+//#include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+//     FILE *fp;
+//     fp=fopen("sample.txt","w+");
+//     if(fp==NULL)
+//     {
+//         fprintf(stderr,"File opening failed");
+//         return 1;
+//     }
+//     int student;
+//     int subject;
+//     printf("How many Students are there? : ");
+//     scanf("%d",&student);
+//     printf("How many subjects? : ");
+//     scanf("%d",&subject);
+//     int id;
+//     for(int i=0;i<student;i++)
+//     {
+//         printf("Enter Student ID : ");
+//         scanf("%d",&id);
+//         fprintf(fp,"ID : %d ",id);
+//         int mark;
+//         int total=0;
+//         int m;
+//         int highest=0;
+//         for(int j=0;j<subject;j++)
+//         {
+//             printf("Enter number for Subject %d : ",j+1);
+//             scanf("%d",&mark);
+//             if(mark>highest) highest=mark;
+//             fprintf(fp," %d ",mark);
+//             total+=mark;
+//         }
+//         printf("Total and highest mark for student %d is : %d and %d\n",i+1,total,highest);
+//         fprintf(fp,"\n");
+//     }
+//     rewind(fp);
+//     fclose(fp);
+// } /
+// #include<stdio.h>
+// #include<string.h>
+// #include<stdlib.h>
+// #include<ctype.h>
+// #include<assert.h>
+
+// #define m 5 //assuming m=5(101,103,163,141,129)
+// char sub[m][8]={"CSE101","CSE103","EEE163","MATH141","PHY129"};
+// int main(){
+//     FILE *fp=fopen("marks.txt","r+");
+//     assert(fp!=NULL);
+//     printf("Do you want to entry a new student's information?(Yes or No) ");
+//     char choice[4];
+//     scanf("%s",choice);
+//     while(strcmp(choice,"Yes")==0){
+//         int studentID;
+//         printf("Enter Student ID: ");
+//         scanf("%d", &studentID);
+//         int marks[m];
+//         for(int i=0;i<m;i++){
+//             printf("Enter %s Marks: ", sub[i]);
+//             scanf("%d", &marks[i]);
+//         }
+//         fprintf(fp, "%d ", studentID);
+//         for(int i=0;i<m;i++){
+//             fprintf(fp, "%d ",marks[i]);
+//         }
+//         fprintf(fp, "\n");
+//         printf("Do you want to enter another student's information?(Yes or No) ");
+//         scanf("%s",choice);
+//     }
+//     rewind(fp);
+//     int studentID[100];
+//     int marks[100][m];
+//     int num_of_students=0;
+//     while(fscanf(fp, "%d", &studentID[num_of_students])==1){
+//         for(int j=0;j<m;j++){
+//             fscanf(fp, "%d", &marks[num_of_students][j]);
+//         }
+//         num_of_students++;
+//     }
+//     printf("Wanna see marks of a particular student?(Yes or No) ");
+//     scanf("%s",choice);
+//     while(strcmp(choice,"Yes")==0){
+//         int id;
+//         printf("Enter Student ID: ");
+//         scanf("%d", &id);
+//         int found = 0;
+//         for(int i=0;i<num_of_students;i++){
+//             if(studentID[i] == id){
+//                 found = 1;
+//                 printf("Marks of Student ID %d:\n", id);
+//                 for(int j=0;j<m;j++){
+//                     printf("%-10s", sub[j]);
+//                 }
+//                 printf("\n");
+//                 for(int j=0;j<m;j++){
+//                     printf("%-10d", marks[i][j]);
+//                 }
+//                 break;
+//             }
+//         }
+//         if(!found) {
+//             printf("Student ID %d not found.\n", id);
+//         }
+//         printf("Wanna see marks of another student?(Yes or No) ");
+//         scanf("%s",choice);
+//     }
+//     int totalmarks[num_of_students];
+//     for(int i=0;i<num_of_students;i++){
+//         totalmarks[i] = 0;
+//         for(int j=0;j<m;j++){
+//             totalmarks[i] += marks[i][j];
+//         }
+//     }
+//     printf("%-15s%-15s\n","Student ID","Total Mark");
+//     for(int i=0;i<num_of_students;i++){
+//         printf("%-15d%-15d\n", studentID[i], totalmarks[i]);
+//     }
+//     printf("Highest marks in indivisual subject:\n");
+//     for(int i=0;i<m;i++){
+//         printf("%-10s", sub[i]);
+//     }
+//     printf("\n");
+//     for(int i=0;i<m;i++){
+//         int highest = 0;
+//         for(int j=0;j<num_of_students;j++){
+//             if(marks[j][i] > highest){
+//                 highest = marks[j][i];
+//             }
+//         }
+//         printf("%-10d", highest);
+//     }
+//     printf("\n");
+//     fclose(fp);
+//     return 0;
+// }
+
+// #include <stdio.h>
+
+// int main() {
+//     FILE *fp;
+//     fp = fopen("sample.txt", "w+");
+//     if (fp == NULL) {
+//         fprintf(stderr, "File opening failed\n");
+//         return 1;
+//     }
+
+//     int student, subject;
+//     printf("How many Students are there? : ");
+//     scanf("%d", &student);
+//     printf("How many subjects? : ");
+//     scanf("%d", &subject);
+
+//     for (int i = 0; i < student; i++) {
+//         int id, mark, total = 0, highest = 0;
+//         printf("Enter Student ID : ");
+//         scanf("%d", &id);
+//         fprintf(fp, "%d ", id);  // Write only the ID
+
+//         for (int j = 0; j < subject; j++) {
+//             printf("Enter number for Subject %d : ", j + 1);
+//             scanf("%d", &mark);
+//             fprintf(fp, "%d ", mark);
+//             total += mark;
+//             if (mark > highest) highest = mark;
+//         }
+
+//         printf("Total and highest mark for student %d is : %d and %d\n", i + 1, total, highest);
+//         fprintf(fp, "\n");
+//     }
+
+//     // Search for a student ID
+//     rewind(fp);
+//     int search_id;
+//     printf("\nEnter ID to search: ");
+//     scanf("%d", &search_id);
+
+//     int id, mark, total, found = 0;
+//     while (fscanf(fp, "%d", &id) == 1) {
+//         total = 0;
+//         if (id == search_id) {
+//             for (int i = 0; i < subject; i++) {
+//                 fscanf(fp, "%d", &mark);
+//                 total += mark;
+//             }
+//             printf("Total marks for student ID %d: %d\n", id, total);
+//             found = 1;
+//             break;
+//         } else {
+//             // Skip marks for this student
+//             for (int i = 0; i < subject; i++) {
+//                 fscanf(fp, "%d", &mark);
+//             }
+//         }
+//     }
+
+//     if (!found) {
+//         printf("Student ID %d not found.\n", search_id);
+//     }
+
+//     fclose(fp);
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     FILE *fp;
+//     fp=fopen("sample.txt","r+");
+//     if(fp==NULL)
+//     {
+//         fprintf(fp,"Error opening file");
+//         return 1;
+//     }
+//     int m;
+//     while(1)
+//     {
+//         int i=fscanf(fp,"%d",&m);
+//         if(i==EOF)break;
+//         printf("%d\n",m);
+//     }
+
+// }
+
+// #include<stdio.h>
+// typedef struct
+// {
+//     char name[30];
+//     int id;
+//     int mark;
+//     char cg; 
+// }student;
+// char CGPA(int mark)
+// {
+//     if(mark>=80)return 'A';
+//     else if(mark>=70)return 'B';
+//     else if(mark>=60)return 'C';
+//     else if(mark>=50)return 'D';
+//     else return 'F';
+// }
+// float avg(student s[],int N)
+// {
+//     int sum=0;
+//     for(int i=0;i<N;i++)
+//     {
+//         sum+=s[i].mark;
+//     }
+//     return sum/N;
+// }
+// int main()
+// {
+//     student s[5];
+//     for(int i=0;i<5;i++)
+//     {
+//         printf("Enter Name of the student : ");
+//         scanf("%s",s[i].name);
+//         printf("Enter Student ID : ");
+//         scanf("%d",&s[i].id);
+//         printf("Enter Marks : ");
+//         scanf("%d",&s[i].mark);
+//         s[i].cg=CGPA(s[i].mark);
+//         printf("CGPA for student ID %d is : %c\n",s[i].id,s[i].cg);
+//     }
+// }
+
+// #include<stdio.h>
+// #include<string.h>
+// typedef struct
+// {
+//     char name[10];
+//     int ID;
+//     float cgpa;
+// }Student;
+// int main()
+// {
+//     int n;
+//     printf("How many Students? : ");
+//     scanf("%d",&n);
+//     Student s[n];
+//     for(int i=0;i<n;i++)\
+//     {
+//         printf("Enter name of the student : ");
+//         scanf("%s",s[i].name);
+//         printf("Enter Student ID : ");
+//         scanf("%d",&s[i].ID);
+//         printf("Ënter Student's CGPA : ");
+//         scanf("%f",&s[i].cgpa);
+//     }
+// }
+// #include<stdio.h>
+
+// struct student
+// {
+//     char name[10];
+//     int ID;
+//     float cgpa;
+// };
+
+// void swap(struct student s[],int n)
+// {
+//     struct student temp;
+//     for(int i=0;i<n-1;i++)
+//     {
+//         for(int j=0;j<n-i-1;j++)
+//         {
+//             if(s[j].cgpa<s[j].cgpa)
+//             {
+//                 temp=s[j];
+//                 s[j]=s[j+1];
+//                 s[j+1]=temp;
+//             }
+//         }
+//     }
+// }
+// int main()
+// {
+//     int n;
+//     printf("How many Students? : ");
+//     scanf("%d",&n);
+//     struct student s[n];
+//     for(int i=0;i<n;i++)\
+//     {
+//         printf("Enter name of the student : ");
+//         scanf("%s",s[i].name);
+//         printf("Enter Student ID : ");
+//         scanf("%d",&s[i].ID);
+//         printf("Ënter Student's CGPA : ");
+//         scanf("%f",&s[i].cgpa);
+//     }
+//     swap(s,n);
+//     for(int i=0;i<n;i++)
+//     {
+//         printf("Name : %s ,ID: %d CGPA : %f\n",s[i].name,s[i].ID,s[i].cgpa);
+//     }
+// }
+
 #include<stdio.h>
-#include<string.h>
+typedef struct
+{
+    char name[10];
+    int ID;
+    float cgpa;
+}student;
+
+void swap(student s[],int n)
+{
+    student temp;
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n-i-1;j++)
+        {
+            if(s[j].cgpa<s[j+1].cgpa)
+            {
+                temp=s[j];
+                s[j]=s[j+1];
+                s[j+1]=temp;
+            }
+        }
+    }
+}
 int main()
 {
-    FILE *fp;
-    fp=fopen("sample.txt","w+");
-    if(fp==NULL)
+    int n;
+    printf("How many Students? : ");
+    scanf("%d",&n);
+    student s[n];
+    for(int i=0;i<n;i++)\
     {
-        fprintf(stderr,"File opening failed");
-        return 1;
-    }
-    int student;
-    int subject;
-    printf("How many Students are there? : ");
-    scanf("%d",&student);
-    printf("How many subjects? : ");
-    scanf("%d",&subject);
-    int id;
-    for(int i=0;i<student;i++)
-    {
+        printf("Enter name of the student : ");
+        scanf("%s",s[i].name);
         printf("Enter Student ID : ");
-        scanf("%d",&id);
-        fprintf(fp,"ID : %d ",id);
-        int mark;
-        int total=0;
-        int m;
-        int highest=0;
-        for(int j=0;j<subject;j++)
-        {
-            printf("Enter number for Subject %d : ",j+1);
-            scanf("%d",&mark);
-            if(mark>highest) highest=mark;
-            fprintf(fp," %d ",mark);
-            total+=mark;
-        }
-        printf("Total and highest mark for student %d is : %d and %d\n",i+1,total,highest);
-        fprintf(fp,"\n");
+        scanf("%d",&s[i].ID);
+        printf("Ënter Student's CGPA : ");
+        scanf("%f",&s[i].cgpa);
     }
-    rewind(fp);
-    fclose(fp);
-}    
+    swap(s,n);
+    for(int i=0;i<n;i++)
+    {
+        printf("Name : %s ,ID: %d CGPA : %.2f\n",s[i].name,s[i].ID,s[i].cgpa);
+    }
+}

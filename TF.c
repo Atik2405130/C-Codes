@@ -2002,48 +2002,85 @@ int main()
 //     }
 // }
 
-#include<stdio.h>
-typedef struct
-{
-    char name[10];
-    int ID;
-    float cgpa;
-}student;
+// #include<stdio.h>
+// typedef struct
+// {
+//     char name[10];
+//     int ID;
+//     float cgpa;
+// }student;
 
-void swap(student s[],int n)
+// void swap(student s[],int n)
+// {
+//     student temp;
+//     for(int i=0;i<n-1;i++)
+//     {
+//         for(int j=0;j<n-i-1;j++)
+//         {
+//             if(s[j].cgpa<s[j+1].cgpa)
+//             {
+//                 temp=s[j];
+//                 s[j]=s[j+1];
+//                 s[j+1]=temp;
+//             }
+//         }
+//     }
+// }
+// int main()
+// {
+//     int n;
+//     printf("How many Students? : ");
+//     scanf("%d",&n);
+//     student s[n];
+//     for(int i=0;i<n;i++)\
+//     {
+//         printf("Enter name of the student : ");
+//         scanf("%s",s[i].name);
+//         printf("Enter Student ID : ");
+//         scanf("%d",&s[i].ID);
+//         printf("Ënter Student's CGPA : ");
+//         scanf("%f",&s[i].cgpa);
+//     }
+//     swap(s,n);
+//     for(int i=0;i<n;i++)
+//     {
+//         printf("Name : %s ,ID: %d CGPA : %.2f\n",s[i].name,s[i].ID,s[i].cgpa);
+//     }
+// }
+
+#include<stdio.h>
+#include<string.h>
+int main()
 {
-    student temp;
-    for(int i=0;i<n-1;i++)
+    FILE *fp=fopen("sample.txt","r+");
+    int n;
+    scanf("%d",&n);
+    fprintf(fp,"%d\n",n);
+    char str[n][100];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s",str[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+        fprintf(fp,"%s\n",str[i]);
+    }
+    for(int i=0;i<n-i;i++)
     {
         for(int j=0;j<n-i-1;j++)
         {
-            if(s[j].cgpa<s[j+1].cgpa)
+            if(strcmp(str[j],str[j+1])>0)
             {
-                temp=s[j];
-                s[j]=s[j+1];
-                s[j+1]=temp;
+                char temp[10];
+                strcpy(temp,str[j]);
+                strcpy(str[j],str[j+1]);
+                strcpy(str[j+1],temp);
             }
         }
     }
-}
-int main()
-{
-    int n;
-    printf("How many Students? : ");
-    scanf("%d",&n);
-    student s[n];
-    for(int i=0;i<n;i++)\
-    {
-        printf("Enter name of the student : ");
-        scanf("%s",s[i].name);
-        printf("Enter Student ID : ");
-        scanf("%d",&s[i].ID);
-        printf("Ënter Student's CGPA : ");
-        scanf("%f",&s[i].cgpa);
-    }
-    swap(s,n);
+    fseek(fp,0,SEEK_END);
     for(int i=0;i<n;i++)
     {
-        printf("Name : %s ,ID: %d CGPA : %.2f\n",s[i].name,s[i].ID,s[i].cgpa);
+        fprintf(fp,"\n%s\n",str[i]);
     }
 }

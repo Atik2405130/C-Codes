@@ -1,2 +1,22 @@
-12 323 434 
-23 43 54 
+5
+zo
+umbrella
+apple
+cat
+dog
+na
+apple
+banana
+cat
+umbrella
+zoo
+
+apple
+
+cat
+
+dog
+
+umbrella
+
+zo

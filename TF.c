@@ -1519,3 +1519,189 @@ int main()
 //     printf("%d",x);
 // }
 
+// #include<stdio.h>
+// int main()
+// {
+//     FILE *fp;
+//     fp=fopen("sample.txt","r+");
+//     if(fp==NULL)
+//     {
+//         fprintf(stderr,"File opening failed");
+//         return 1;
+//     }
+//     //fprintf(fp,"%d %f %c",2,2.5,'s');
+//     fseek(fp,0,SEEK_END);
+//     fclose(fp);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     FILE *fp;
+//     int x;
+//     fp=fopen("sample.txt","r+");
+//     while(1)
+//     {
+//         int i=fscanf(fp,"%d",&x);
+//         if(i==EOF)break;
+//         else printf("%d\n",x);
+//     }
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     FILE *fp=fopen("sample.txt","r+");
+//     if(fp==NULL)
+//     {
+//         fprintf(stderr,"File opening failed");
+//         return 1;
+//     }
+//     int num;
+//     int sum=0;
+//     while(1)
+//     {
+//         int i=fscanf(fp,"%d",&num);
+//         if(i==EOF) break;
+//         if(num%2!=0)sum+=num;
+//     }
+//     fprintf(fp,"Total sum of the odd numbers is : %d",sum);
+//     fclose(fp);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     FILE *fp1,*fp2;
+//     fp1=fopen("new.txt","w+");
+//     fp2=fopen("sample.txt","r");
+//     char str[100];
+//     for(int i=0;i<2;i++)
+//     {
+//         fgets(str,sizeof(str),fp2);
+//         fprintf(fp1,"%s\n",str);
+//     }
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     FILE *fp;
+//     fp=fopen("sample.txt","w+");
+//     if(fp==NULL)
+//     {
+//         fprintf(stderr,"File opening failed");
+//         return 1;
+//     }
+//     for(int i=0;i<5;i++)
+//     {
+//         char name[50];
+//         int mark;
+//         printf("Enter name of the Student : ");
+//         scanf("%s",name);
+//         fprintf(fp,"%s ",name);
+//         for(int j=0;j<5;j++)
+//         {
+//             printf("Enter number of the students : ");
+//             scanf("%d",&mark);
+//             fprintf(fp," Mark for subject %d : %d",j+1,mark);
+//         }
+//         fprintf(fp,"\n");
+//     }
+// }
+
+// #include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+//     FILE *fp;
+//     fp=fopen("sample.txt","w+");
+//     if(fp==NULL)
+//     {
+//         fprintf(stderr,"File cannot be opened");
+//         return 1;
+//     }
+//     for(int i=0;i<2;i++)
+//     {
+//         char name[50];
+//         int mark;
+//         printf("Enter the name of the student : ");
+//         scanf("%s",name);
+//         fprintf(fp,"%s",name);
+//         for(int j=0;j<5;j++)
+//         {
+//             printf("Enter mark for subject %d : ",j+1);
+//             scanf("%d",&mark);
+//             fprintf(fp," %d",mark);
+//         }
+//         fprintf(fp,"\n");
+//     }
+//     rewind(fp);
+//     char best[50],worst[50];
+//     int bestm=0,worstm=0;
+//     int bm=-1,wm=999;
+//     for(int i=0;i<2;i++)
+//     {
+//         int a,b,c,d,e;
+//         char name[50];
+//         fscanf(fp,"%s%d%d%d%d%d",name,&a,&b,&c,&d,&e);
+//         int total=a+b+c+d+e;
+//         if((total)>bm)
+//         {
+//             strcpy(best,name);
+//             bestm=total;
+//             bm=total;
+//         }
+//         if((total<wm))
+//         {
+//             strcpy(worst,name);
+//             worstm=total;
+//             wm=total;
+//         }
+//     }
+//     fclose(fp);
+//     printf("%s has got best marks , best mark : %d",best,bestm);
+//     printf("%s has got worst marks , worst mark :%d",worst,worstm);
+// }
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    FILE *fp;
+    fp=fopen("sample.txt","w+");
+    if(fp==NULL)
+    {
+        fprintf(stderr,"File opening failed");
+        return 1;
+    }
+    int student;
+    int subject;
+    printf("How many Students are there? : ");
+    scanf("%d",&student);
+    printf("How many subjects? : ");
+    scanf("%d",&subject);
+    int id;
+    for(int i=0;i<student;i++)
+    {
+        printf("Enter Student ID : ");
+        scanf("%d",&id);
+        fprintf(fp,"ID : %d ",id);
+        int mark;
+        int total=0;
+        int m;
+        int highest=0;
+        for(int j=0;j<subject;j++)
+        {
+            printf("Enter number for Subject %d : ",j+1);
+            scanf("%d",&mark);
+            if(mark>highest) highest=mark;
+            fprintf(fp," %d ",mark);
+            total+=mark;
+        }
+        printf("Total and highest mark for student %d is : %d and %d\n",i+1,total,highest);
+        fprintf(fp,"\n");
+    }
+    rewind(fp);
+    fclose(fp);
+}    

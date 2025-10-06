@@ -1986,7 +1986,7 @@ int main()
 //     printf("How many Students? : ");
 //     scanf("%d",&n);
 //     struct student s[n];
-//     for(int i=0;i<n;i++)\
+//     for(int i=0;i<n;i++)
 //     {
 //         printf("Enter name of the student : ");
 //         scanf("%s",s[i].name);
@@ -2048,39 +2048,64 @@ int main()
 //     }
 // }
 
+// #include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+//     FILE *fp=fopen("sample.txt","r+");
+//     int n;
+//     scanf("%d",&n);
+//     fprintf(fp,"%d\n",n);
+//     char str[n][100];
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%s",str[i]);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         fprintf(fp,"%s\n",str[i]);
+//     }
+//     for(int i=0;i<n-i;i++)
+//     {
+//         for(int j=0;j<n-i-1;j++)
+//         {
+//             if(strcmp(str[j],str[j+1])>0)
+//             {
+//                 char temp[10];
+//                 strcpy(temp,str[j]);
+//                 strcpy(str[j],str[j+1]);
+//                 strcpy(str[j+1],temp);
+//             }
+//         }
+//     }
+//     fseek(fp,0,SEEK_END);
+//     for(int i=0;i<n;i++)
+//     {
+//         fprintf(fp,"\n%s\n",str[i]);
+//     }
+// }
+
 #include<stdio.h>
-#include<string.h>
 int main()
 {
-    FILE *fp=fopen("sample.txt","r+");
-    int n;
-    scanf("%d",&n);
-    fprintf(fp,"%d\n",n);
-    char str[n][100];
-    for(int i=0;i<n;i++)
+    char str[100];
+    int num=1234;
+    int i=0,j=0;
+    int temp=num;
+    while(temp!=0)
     {
-        scanf("%s",str[i]);
+        str[i++]=temp%10+'0';
+        temp/=10;
     }
-    for(int i=0;i<n;i++)
+    str[i]='\0';
+    i--;
+    while(j<i)
     {
-        fprintf(fp,"%s\n",str[i]);
+        char c=str[j];
+        str[j]=str[i];
+        str[i]=c;
+        j++;
+        i--;
     }
-    for(int i=0;i<n-i;i++)
-    {
-        for(int j=0;j<n-i-1;j++)
-        {
-            if(strcmp(str[j],str[j+1])>0)
-            {
-                char temp[10];
-                strcpy(temp,str[j]);
-                strcpy(str[j],str[j+1]);
-                strcpy(str[j+1],temp);
-            }
-        }
-    }
-    fseek(fp,0,SEEK_END);
-    for(int i=0;i<n;i++)
-    {
-        fprintf(fp,"\n%s\n",str[i]);
-    }
+    printf("%s",str);
 }

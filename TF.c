@@ -2048,39 +2048,40 @@ int main()
 //     }
 // }
 
-#include<stdio.h>
-#include<string.h>
-int main()
-{
-    FILE *fp=fopen("sample.txt","r+");
-    int n;
-    scanf("%d",&n);
-    fprintf(fp,"%d\n",n);
-    char str[n][100];
-    for(int i=0;i<n;i++)
-    {
-        scanf("%s",str[i]);
-    }
-    for(int i=0;i<n;i++)
-    {
-        fprintf(fp,"%s\n",str[i]);
-    }
-    for(int i=0;i<n-i;i++)
-    {
-        for(int j=0;j<n-i-1;j++)
-        {
-            if(strcmp(str[j],str[j+1])>0)
-            {
-                char temp[10];
-                strcpy(temp,str[j]);
-                strcpy(str[j],str[j+1]);
-                strcpy(str[j+1],temp);
-            }
-        }
-    }
-    fseek(fp,0,SEEK_END);
-    for(int i=0;i<n;i++)
-    {
-        fprintf(fp,"\n%s\n",str[i]);
-    }
-}
+// #include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+//     FILE *fp=fopen("sample.txt","r+");
+//     int n;
+//     scanf("%d",&n);
+//     fprintf(fp,"%d\n",n);
+//     char str[n][100];
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%s",str[i]);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         fprintf(fp,"%s\n",str[i]);
+//     }
+//     for(int i=0;i<n-i;i++)
+//     {
+//         for(int j=0;j<n-i-1;j++)
+//         {
+//             if(strcmp(str[j],str[j+1])>0)
+//             {
+//                 char temp[10];
+//                 strcpy(temp,str[j]);
+//                 strcpy(str[j],str[j+1]);
+//                 strcpy(str[j+1],temp);
+//             }
+//         }
+//     }
+//     fseek(fp,0,SEEK_END);
+//     for(int i=0;i<n;i++)
+//     {
+//         fprintf(fp,"\n%s\n",str[i]);
+//     }
+// }
+

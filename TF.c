@@ -2032,7 +2032,7 @@ int main()
 //     printf("How many Students? : ");
 //     scanf("%d",&n);
 //     student s[n];
-//     for(int i=0;i<n;i++)\
+//     for(int i=0;i<n;i++)
 //     {
 //         printf("Enter name of the student : ");
 //         scanf("%s",s[i].name);
@@ -2085,27 +2085,205 @@ int main()
 //     }
 // }
 
+// #include<stdio.h>
+// int main()
+// {
+//     char str[100];
+//     int num=1234;
+//     int i=0,j=0;
+//     int temp=num;
+//     while(temp!=0)
+//     {
+//         str[i++]=temp%10+'0';
+//         temp/=10;
+//     }
+//     str[i]='\0';
+//     i--;
+//     while(j<i)
+//     {
+//         char c=str[j];
+//         str[j]=str[i];
+//         str[i]=c;
+//         j++;
+//         i--;
+//     }
+//     printf("%s",str);
+// }
+
+// #include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+//     //char target=':';
+//     char *str="12:130:45:1";
+//     //for(int i=0;i<strlen(str);i++)
+//     //{
+//       //  if(str[i]==target)printf("found at %dnd  position\n",i+1);
+//     //}
+//     char *q=str;
+//     while(q=strchr(q,':'))
+//     {
+//         if(q)
+//         {
+//             printf("Found at %d position\n",q-str);
+//             q++;
+//         }
+//     }
+// }
+
+// #include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+//     char *const target="bc";
+//     char *str="abcdbce";
+//     for(int i=0;i<strlen(str);i++)
+//     {
+//         for(int j=i+1;j<strlen(str);j++)
+//         {
+//             char temp=str[i+j];
+//             if(strcmp(temp,target)==0)
+//             {
+//                 printf("found at %d position",i);
+//             }
+//         }
+//     }
+// }
+// #include<stdio.h>
+// int main()
+// {
+//     char str[]="abcdeabed";
+//     char target[]="ab";
+//     int len1=0;
+//     while(str[len1]!='\0')
+//     {
+//         len1++;
+//     }
+//     int len2=0;
+//     while(target[len2]!='\0')
+//     {
+//         len2++;
+//     }
+//     int found;
+//     for(int i=0;i<len1;i++)
+//     {
+//         int found=1;
+//         for(int j=0;j<len2;j++)
+//         {
+//             if(str[i+j]!=target[j])
+//             {
+//                 found=0;
+//                 break;
+//             }
+//         }
+//         if(found)
+//         printf("found at %d position ",i);
+//     }
+// }
+
+// #include<stdio.h>
+// #include<string.h>
+// int main()
+// {
+//     char str[]="I love my country Bangladesh";
+//     char *p=strtok(str," ");
+//     while(p)
+//     {
+//         printf("%s\n",p);
+//         p=strtok(NULL," ");
+//     }
+// }
+
+// #include<stdio.h>
+// #include<string.h>
+// #include<math.h>
+// int main()
+// {
+//     char str[100];
+//     scanf("%s",str);
+//     int len=strlen(str);
+//     int dec=0;
+//     for(int i=0;i<len;i++)
+//     {
+//         if(str[i]=='A')dec+=10*(pow(16,len-i-1));
+//         else if(str[i]=='B')dec+=11*(pow(16,len-i-1));
+//         else if(str[i]=='C')dec+=12*(pow(16,len-i-1));
+//         else if(str[i]=='D')dec+=13*(pow(16,len-i-1));
+//         else if(str[i]=='E')dec+=14*(pow(16,len-i-1));
+//         else if(str[i]=='F')dec+=15*(pow(16,len-i-1));
+//         else dec+=(str[i]-'0')*(pow(16,len-i-1));
+//     }
+//     printf("Decimal : %d\n",dec);
+//     int temp=dec;
+//     char oct[100];
+//     int j=0;
+//     while(temp)
+//     {
+//         oct[j++]=temp%8+'0';
+//         temp/=8;
+//     }
+//     strrev(oct);
+//     printf("Octal : %s",oct);
+// }
+
 #include<stdio.h>
 int main()
 {
-    char str[100];
-    int num=1234;
-    int i=0,j=0;
-    int temp=num;
-    while(temp!=0)
+    int n;
+    printf("Enter decimal number : ");
+    scanf("%d",&n);
+    char hex[100];
+    int temp=n;
+    int i=0;
+    while(temp)
     {
-        str[i++]=temp%10+'0';
-        temp/=10;
+        if(temp%16==10)
+        {
+            hex[i++]='A';
+            temp/=16;
+        }
+        else if(temp%16==11)
+        {
+            hex[i++]='B';
+            temp/=16;
+        }
+        else if(temp%16==12)
+        {
+            hex[i++]='C';
+            temp/=16;
+        }
+        else if(temp%16==13)
+        {
+            hex[i++]='D';
+            temp/=16;
+        }
+        else if(temp%16==14)
+        {
+            hex[i++]='E';
+            temp/=16;
+        }
+        else if(temp%16==15)
+        {
+            hex[i++]='F';
+            temp/=16;
+        }
+        else
+        {
+            hex[i++]=temp%16+'0';
+            temp/=16;
+        }
     }
-    str[i]='\0';
-    i--;
-    while(j<i)
+    hex[i]='\0';
+    int len=0;
+    while(hex[len]!='\0')
     {
-        char c=str[j];
-        str[j]=str[i];
-        str[i]=c;
-        j++;
-        i--;
+        len++;
     }
-    printf("%s",str);
+    for(int i=0;i<len/2;i++)
+    {
+        char temp=hex[i];
+        hex[i]=hex[len-1-i];
+        hex[len-1-i]=temp;
+    }
+    printf("%s",hex);
 }

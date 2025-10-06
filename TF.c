@@ -2085,8 +2085,6 @@ int main()
 //     }
 // }
 
-<<<<<<< HEAD
-=======
 // #include<stdio.h>
 // int main()
 // {
@@ -2289,4 +2287,3 @@ int main()
     }
     printf("%s",hex);
 }
->>>>>>> 6d8d83a9b937263682fb76453da7a0d8b549a43a

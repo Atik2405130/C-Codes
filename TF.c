@@ -2311,5 +2311,22 @@ int main()
                 count++;
             }
     }
+<<<<<<< HEAD
     printf("Found %d times ",count);
 }
+=======
+    hex[i]='\0';
+    int len=0;
+    while(hex[len]!='\0')
+    {
+        len++;
+    }
+    for(int i=0;i<len/2;i++)
+    {
+        char temp=hex[i];
+        hex[i]=hex[len-1-i];
+        hex[len-1-i]=temp;
+    }
+    printf("%s",hex);
+}
+>>>>>>> 99f3ef1bb79b2b6443bbbf33d6a267f9dd6776ef

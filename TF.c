@@ -2326,26 +2326,90 @@ int main()
 //     }
 // }
 
-#include<stdio.h>
-int main(int argc,const char *argv[])
-{
-    FILE *fp;
-    fp=fopen(argv[1],"r");
-    if(fp==NULL)
-    {
-        fprintf(stderr,"File not found");
-        return 1;
-    }
-    int num=0;
-    int sum=0;
-    while(1)
-    {
-        int i=fscanf(fp,"%d",&num);
-        if(i==EOF)break;
-        if(num%2!=0)
-        {
-            sum+=num;
-        }
-    }
-    printf("%d",sum);
-}
+// #include<stdio.h>
+// int main(int argc,const char *argv[])
+// {
+//     FILE *fp;
+//     fp=fopen(argv[1],"r");
+//     if(fp==NULL)
+//     {
+//         fprintf(stderr,"File not found");
+//         return 1;
+//     }
+//     int num=0;
+//     int sum=0;
+//     while(1)
+//     {
+//         int i=fscanf(fp,"%d",&num);
+//         if(i==EOF)break;
+//         if(num%2!=0)
+//         {
+//             sum+=num;
+//         }
+//     }
+//     printf("%d",sum);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int n;
+//     char c;
+//     scanf("%d %c",&n,&c);
+//     char x=c-'A';
+//     x=(x-n%26+26)%26+'A';
+//     printf("%c",x);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a,b,c;
+//     scanf("%d%d%d",&a,&b,&c);
+//     int max=0;
+//     int smax=0;
+//     if(a>b)
+//     {
+//         max=a;
+//         smax=b;
+//     }
+//     else
+//     {
+//         max=b;
+//         smax=a;
+//     }
+//     if(c>max)
+//     {
+//         smax=max;
+//         max=c;
+//     }
+//     else if(c>smax && c<max)
+//     {
+//         smax=c;
+//     }
+//     printf("Maximun number is : %d\nSecend Maximum number is : %d",max,smax);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int y;
+//     scanf("%d",&y);
+//     int i=(((y%400)==0)) || ((y%100!=0) && ((y%4)==0));
+    
+//     if(i){
+//         printf("Leap year");
+//     }
+//     else printf("Not Leap year");
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int max,smax;
+//     int a,b,c;
+//     scanf("%d%d%d",&a,&b,&c);
+//     max=((a>b && a>c)?a:((b>c && b>a)?b:c));
+//     printf("%d",max);
+// }
+

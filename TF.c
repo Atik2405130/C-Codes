@@ -2194,96 +2194,122 @@ int main()
 //     }
 // }
 
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+int main()
+{
+    char str[100];
+    scanf("%s",str);
+    int len=strlen(str);
+    int dec=0;
+    for(int i=0;i<len;i++)
+    {
+        if(str[i]=='A')dec+=10*(pow(16,len-i-1));
+        else if(str[i]=='B')dec+=11*(pow(16,len-i-1));
+        else if(str[i]=='C')dec+=12*(pow(16,len-i-1));
+        else if(str[i]=='D')dec+=13*(pow(16,len-i-1));
+        else if(str[i]=='E')dec+=14*(pow(16,len-i-1));
+        else if(str[i]=='F')dec+=15*(pow(16,len-i-1));
+        else dec+=(str[i]-'0')*(pow(16,len-i-1));
+    }
+    printf("Decimal : %d\n",dec);
+    int temp=dec;
+    char oct[100];
+    int j=0;
+    while(temp)
+    {
+        oct[j++]=temp%8+'0';
+        temp/=8;
+    }
+    strrev(oct);
+    printf("Octal : %s",oct);
+}
+
 // #include<stdio.h>
-// #include<string.h>
-// #include<math.h>
 // int main()
 // {
-//     char str[100];
-//     scanf("%s",str);
-//     int len=strlen(str);
-//     int dec=0;
-//     for(int i=0;i<len;i++)
-//     {
-//         if(str[i]=='A')dec+=10*(pow(16,len-i-1));
-//         else if(str[i]=='B')dec+=11*(pow(16,len-i-1));
-//         else if(str[i]=='C')dec+=12*(pow(16,len-i-1));
-//         else if(str[i]=='D')dec+=13*(pow(16,len-i-1));
-//         else if(str[i]=='E')dec+=14*(pow(16,len-i-1));
-//         else if(str[i]=='F')dec+=15*(pow(16,len-i-1));
-//         else dec+=(str[i]-'0')*(pow(16,len-i-1));
-//     }
-//     printf("Decimal : %d\n",dec);
-//     int temp=dec;
-//     char oct[100];
-//     int j=0;
+//     int n;
+//     printf("Enter decimal number : ");
+//     scanf("%d",&n);
+//     char hex[100];
+//     int temp=n;
+//     int i=0;
 //     while(temp)
 //     {
-//         oct[j++]=temp%8+'0';
-//         temp/=8;
+//         if(temp%16==10)
+//         {
+//             hex[i++]='A';
+//             temp/=16;
+//         }
+//         else if(temp%16==11)
+//         {
+//             hex[i++]='B';
+//             temp/=16;
+//         }
+//         else if(temp%16==12)
+//         {
+//             hex[i++]='C';
+//             temp/=16;
+//         }
+//         else if(temp%16==13)
+//         {
+//             hex[i++]='D';
+//             temp/=16;
+//         }
+//         else if(temp%16==14)
+//         {
+//             hex[i++]='E';
+//             temp/=16;
+//         }
+//         else if(temp%16==15)
+//         {
+//             hex[i++]='F';
+//             temp/=16;
+//         }
+//         else
+//         {
+//             hex[i++]=temp%16+'0';
+//             temp/=16;
+//         }
 //     }
-//     strrev(oct);
-//     printf("Octal : %s",oct);
+//     hex[i]='\0';
+//     int len=0;
+//     while(hex[len]!='\0')
+//     {
+//         len++;
+//     }
+//     for(int i=0;i<len/2;i++)
+//     {
+//         char temp=hex[i];
+//         hex[i]=hex[len-1-i];
+//         hex[len-1-i]=temp;
+//     }
+//     printf("%s",hex);
 // }
 
 #include<stdio.h>
 int main()
 {
-    int n;
-    printf("Enter decimal number : ");
-    scanf("%d",&n);
-    char hex[100];
-    int temp=n;
-    int i=0;
-    while(temp)
+    char str[]="aaa";
+    char exp[]="aa";
+    int count=0;
+    for(int i=0;i<3;i++)
     {
-        if(temp%16==10)
+        int found=1;
+        for(int j=0;j<2;j++)
         {
-            hex[i++]='A';
-            temp/=16;
+            if(str[i+j]!=exp[j])
+            {
+                found=0;
+                break;
+            }
         }
-        else if(temp%16==11)
-        {
-            hex[i++]='B';
-            temp/=16;
-        }
-        else if(temp%16==12)
-        {
-            hex[i++]='C';
-            temp/=16;
-        }
-        else if(temp%16==13)
-        {
-            hex[i++]='D';
-            temp/=16;
-        }
-        else if(temp%16==14)
-        {
-            hex[i++]='E';
-            temp/=16;
-        }
-        else if(temp%16==15)
-        {
-            hex[i++]='F';
-            temp/=16;
-        }
-        else
-        {
-            hex[i++]=temp%16+'0';
-            temp/=16;
-        }
+        if(found)
+            {
+                printf("found at %d position\n",i);
+                count++;
+            }
     }
-    hex[i]='\0';
-    int len=0;
-    while(hex[len]!='\0')
-    {
-        len++;
-    }
-    for(int i=0;i<len/2;i++)
-    {
-        char temp=hex[i];
-        hex[i]=hex[len-1-i];
-        hex[len-1-i]=temp;
-    }
-    printf("%s",hex);
+    printf("Found %d times ",count);
 }

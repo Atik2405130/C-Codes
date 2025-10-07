@@ -2288,12 +2288,190 @@ int main()
 //     printf("%s",hex);
 // }
 
-#include<stdio.h>
-int main(int argc,char *argv[])
-{
-    printf("Arguments are %d\n",argc);
-    for(int i=0;i<argc;i++)
-    {
-        printf("The argument number %d has value of %s \n",i,argv[i]);
-    }
-}
+// #include<stdio.h>
+// int main()
+// {
+//     int n;
+//     printf("Enter decimal number : ");
+//     scanf("%d",&n);
+//     char hex[100];
+//     int temp=n;
+//     int i=0;
+//     while(temp)
+//     {
+//         if(temp%16==10)
+//         {
+//             hex[i++]='A';
+//             temp/=16;
+//         }
+//         else if(temp%16==11)
+//         {
+//             hex[i++]='B';
+//             temp/=16;
+//         }
+//         else if(temp%16==12)
+//         {
+//             hex[i++]='C';
+//             temp/=16;
+//         }
+//         else if(temp%16==13)
+//         {
+//             hex[i++]='D';
+//             temp/=16;
+//         }
+//         else if(temp%16==14)
+//         {
+//             hex[i++]='E';
+//             temp/=16;
+//         }
+//         else if(temp%16==15)
+//         {
+//             hex[i++]='F';
+//             temp/=16;
+//         }
+//         else
+//         {
+//             hex[i++]=temp%16+'0';
+//             temp/=16;
+//         }
+//     }
+//     hex[i]='\0';
+//     int len=0;
+//     while(hex[len]!='\0')
+//     {
+//         len++;
+//     }
+//     for(int i=0;i<len/2;i++)
+//     {
+//         char temp=hex[i];
+//         hex[i]=hex[len-1-i];
+//         hex[len-1-i]=temp;
+//     }
+//     printf("%s",hex);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     char str[]="aaa";
+//     char exp[]="aa";
+//     int count=0;
+//     for(int i=0;i<3;i++)
+//     {
+//         int found=1;
+//         for(int j=0;j<2;j++)
+//         {
+//             if(str[i+j]!=exp[j])
+//             {
+//                 found=0;
+//                 break;
+//             }
+//         }
+//         if(found)
+//             {
+//                 printf("found at %d position\n",i);
+//                 count++;
+//             }
+//     }
+//     printf("Found %d times ",count);
+// }
+
+/////// Command Line Argument ///////
+
+// #include<stdio.h>
+// int main(int argc,char *argv[])
+// {
+//     printf("Arguments number are %d\n",argc);
+//     for(int i=0;i<argc;i++)
+//     {
+//         printf("Arguments number %d is : %s\n",i,argv[i]);
+//     }
+// }
+
+// #include<stdio.h>
+// int main(int argc,const char *argv[])
+// {
+//     FILE *fp;
+//     fp=fopen(argv[1],"r");
+//     if(fp==NULL)
+//     {
+//         fprintf(stderr,"File not found");
+//         return 1;
+//     }
+//     int num=0;
+//     int sum=0;
+//     while(1)
+//     {
+//         int i=fscanf(fp,"%d",&num);
+//         if(i==EOF)break;
+//         if(num%2!=0)
+//         {
+//             sum+=num;
+//         }
+//     }
+//     printf("%d",sum);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int n;
+//     char c;
+//     scanf("%d %c",&n,&c);
+//     char x=c-'A';
+//     x=(x-n%26+26)%26+'A';
+//     printf("%c",x);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a,b,c;
+//     scanf("%d%d%d",&a,&b,&c);
+//     int max=0;
+//     int smax=0;
+//     if(a>b)
+//     {
+//         max=a;
+//         smax=b;
+//     }
+//     else
+//     {
+//         max=b;
+//         smax=a;
+//     }
+//     if(c>max)
+//     {
+//         smax=max;
+//         max=c;
+//     }
+//     else if(c>smax && c<max)
+//     {
+//         smax=c;
+//     }
+//     printf("Maximun number is : %d\nSecend Maximum number is : %d",max,smax);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int y;
+//     scanf("%d",&y);
+//     int i=(((y%400)==0)) || ((y%100!=0) && ((y%4)==0));
+    
+//     if(i){
+//         printf("Leap year");
+//     }
+//     else printf("Not Leap year");
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int max,smax;
+//     int a,b,c;
+//     scanf("%d%d%d",&a,&b,&c);
+//     max=((a>b && a>c)?a:((b>c && b>a)?b:c));
+//     printf("%d",max);
+// }
+

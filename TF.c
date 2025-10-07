@@ -2194,37 +2194,37 @@ int main()
 //     }
 // }
 
-#include<stdio.h>
-#include<string.h>
-#include<math.h>
-int main()
-{
-    char str[100];
-    scanf("%s",str);
-    int len=strlen(str);
-    int dec=0;
-    for(int i=0;i<len;i++)
-    {
-        if(str[i]=='A')dec+=10*(pow(16,len-i-1));
-        else if(str[i]=='B')dec+=11*(pow(16,len-i-1));
-        else if(str[i]=='C')dec+=12*(pow(16,len-i-1));
-        else if(str[i]=='D')dec+=13*(pow(16,len-i-1));
-        else if(str[i]=='E')dec+=14*(pow(16,len-i-1));
-        else if(str[i]=='F')dec+=15*(pow(16,len-i-1));
-        else dec+=(str[i]-'0')*(pow(16,len-i-1));
-    }
-    printf("Decimal : %d\n",dec);
-    int temp=dec;
-    char oct[100];
-    int j=0;
-    while(temp)
-    {
-        oct[j++]=temp%8+'0';
-        temp/=8;
-    }
-    strrev(oct);
-    printf("Octal : %s",oct);
-}
+// #include<stdio.h>
+// #include<string.h>
+// #include<math.h>
+// int main()
+// {
+//     char str[100];
+//     scanf("%s",str);
+//     int len=strlen(str);
+//     int dec=0;
+//     for(int i=0;i<len;i++)
+//     {
+//         if(str[i]=='A')dec+=10*(pow(16,len-i-1));
+//         else if(str[i]=='B')dec+=11*(pow(16,len-i-1));
+//         else if(str[i]=='C')dec+=12*(pow(16,len-i-1));
+//         else if(str[i]=='D')dec+=13*(pow(16,len-i-1));
+//         else if(str[i]=='E')dec+=14*(pow(16,len-i-1));
+//         else if(str[i]=='F')dec+=15*(pow(16,len-i-1));
+//         else dec+=(str[i]-'0')*(pow(16,len-i-1));
+//     }
+//     printf("Decimal : %d\n",dec);
+//     int temp=dec;
+//     char oct[100];
+//     int j=0;
+//     while(temp)
+//     {
+//         oct[j++]=temp%8+'0';
+//         temp/=8;
+//     }
+//     strrev(oct);
+//     printf("Octal : %s",oct);
+// }
 
 // #include<stdio.h>
 // int main()
@@ -2314,4 +2314,38 @@ int main()
 //     printf("Found %d times ",count);
 // }
 
+/////// Command Line Argument ///////
 
+// #include<stdio.h>
+// int main(int argc,char *argv[])
+// {
+//     printf("Arguments number are %d\n",argc);
+//     for(int i=0;i<argc;i++)
+//     {
+//         printf("Arguments number %d is : %s\n",i,argv[i]);
+//     }
+// }
+
+#include<stdio.h>
+int main(int argc,const char *argv[])
+{
+    FILE *fp;
+    fp=fopen(argv[1],"r");
+    if(fp==NULL)
+    {
+        fprintf(stderr,"File not found");
+        return 1;
+    }
+    int num=0;
+    int sum=0;
+    while(1)
+    {
+        int i=fscanf(fp,"%d",&num);
+        if(i==EOF)break;
+        if(num%2!=0)
+        {
+            sum+=num;
+        }
+    }
+    printf("%d",sum);
+}

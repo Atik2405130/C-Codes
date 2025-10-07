@@ -2288,45 +2288,30 @@ int main()
 //     printf("%s",hex);
 // }
 
-#include<stdio.h>
-int main()
-{
-    char str[]="aaa";
-    char exp[]="aa";
-    int count=0;
-    for(int i=0;i<3;i++)
-    {
-        int found=1;
-        for(int j=0;j<2;j++)
-        {
-            if(str[i+j]!=exp[j])
-            {
-                found=0;
-                break;
-            }
-        }
-        if(found)
-            {
-                printf("found at %d position\n",i);
-                count++;
-            }
-    }
-<<<<<<< HEAD
-    printf("Found %d times ",count);
-}
-=======
-    hex[i]='\0';
-    int len=0;
-    while(hex[len]!='\0')
-    {
-        len++;
-    }
-    for(int i=0;i<len/2;i++)
-    {
-        char temp=hex[i];
-        hex[i]=hex[len-1-i];
-        hex[len-1-i]=temp;
-    }
-    printf("%s",hex);
-}
->>>>>>> 99f3ef1bb79b2b6443bbbf33d6a267f9dd6776ef
+// #include<stdio.h>
+// int main()
+// {
+//     char str[]="aaa";
+//     char exp[]="aa";
+//     int count=0;
+//     for(int i=0;i<3;i++)
+//     {
+//         int found=1;
+//         for(int j=0;j<2;j++)
+//         {
+//             if(str[i+j]!=exp[j])
+//             {
+//                 found=0;
+//                 break;
+//             }
+//         }
+//         if(found)
+//             {
+//                 printf("found at %d position\n",i);
+//                 count++;
+//             }
+//     }
+//     printf("Found %d times ",count);
+// }
+
+

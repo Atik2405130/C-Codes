@@ -1945,7 +1945,7 @@ int main()
 //     printf("How many Students? : ");
 //     scanf("%d",&n);
 //     Student s[n];
-//     for(int i=0;i<n;i++)\
+//     for(int i=0;i<n;i++)
 //     {
 //         printf("Enter name of the student : ");
 //         scanf("%s",s[i].name);
@@ -2560,3 +2560,132 @@ int main()
 //         printf("%d ",a[i]);
 //     }
 // }
+
+// #include<stdio.h>
+// #include<stdlib.h>
+
+// union restype
+// {
+//     char name[50];
+//     int mark;
+//     float cgpa;
+// };
+// enum tagtype
+// {
+//     MARK,CGPA
+// };
+// struct student
+// {
+//     int roll;
+//     enum tagtype tag;
+//     union restype result;
+// };
+
+// int main()
+// {
+//     struct student a={130,MARK,{.mark=86}};
+//     union restype b;
+// }
+
+// #include<stdio.h>
+// #include<stdlib.h>
+// struct student
+// {
+//     char name[10];
+//     int roll;
+//     float cgpa;
+// };
+// int main()
+// {
+//     struct student *a=(struct student*)malloc(sizeof(struct student));
+// }
+
+
+//----------Bitwise----------//
+
+// #include<stdio.h>
+// int setbit(int x,int p)
+// {
+//     unsigned int m;
+//     m=1<<p;
+//     return x|m;
+// }
+// int setBits(int x,int p,int n)
+// {
+//     for(int i=0;i<n;i++)
+//     {
+//         x=setbit(x,p-i);
+//     }
+//     return x;
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// char *strtoks(char *str, const char *delims)
+// {
+//     static char *gstr;
+//     if (str != NULL)
+//         gstr = str; // initialize only on first call
+
+//     if (gstr == NULL  || *gstr == '\0') 
+//         return NULL;
+
+//     char *start = gstr;
+
+//     while (*gstr && !strchr(delims, *gstr))
+//         gstr++;
+
+//     if (*gstr)
+//     {
+//         *gstr = '\0'; 
+//         gstr++;       
+//     }
+
+//     return start;
+// }
+
+// int main()
+// {
+//     char str[] = "..You,live.in;Dhaka.Right!";
+//     char delim[]={'.',' ',';','!',','};
+//     char *token = strtoks(str, delim); 
+
+//     while (token != NULL)
+//     {   if(*token!='\0')
+//         printf("%s\n", token);
+//         token = strtoks(NULL,delim);
+//     }
+//     return 0;
+// }
+
+#include<stdio.h>
+#include<string.h>
+
+char *strtoks(char *s,const char *delim)
+{
+    static char *gstr;
+    if(s!=NULL)gstr=s;
+    if(gstr==NULL || *gstr=='\0')return NULL;
+    char *start=gstr;
+    while(*gstr && !(strchr(delim,*gstr)))gstr++;
+    if(*gstr)
+    {
+        *gstr='\0';
+        gstr++;
+    }
+    return start;
+}
+int main()
+{
+    char str[]="You live;in.Bangleshdesh right?";
+    char delim[]={'.',' ',';','\0'};
+    char *t=strtoks(str,delim);
+    while(t)
+    {
+        printf("%s\n",t);
+        t=strtoks(NULL,delim);
+    }
+    return 0;
+}
+

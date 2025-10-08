@@ -2475,3 +2475,88 @@ int main()
 //     printf("%d",max);
 // }
 
+// #include<stdio.h>
+// int gcd(int a,int b)
+// {
+//     while(b!=0)
+//     {
+//         int c=a%b;
+//         a=b;
+//         b=c;
+//     }
+//     return a;
+// }
+// int main()
+// {
+//     int a,b;
+//     scanf("%d%d",&a,&b);
+//     int gcdr=gcd(a,b);
+//     printf("%d",gcd);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int a=6,b=12;
+//     int min=(a<b)?a:b;int max=(a>b)?a:b;
+//     int gcd=0;
+//     for(int i=2;i<=min;i++)
+//     {
+//         if(a%i==0 && b%i==0)
+//         {
+//             gcd=i;
+//         }
+//     }
+//     printf("gcd is : %d\n",gcd);
+//     int lcm=(a>b)?a:b;
+//     while(1)
+//     {
+//         if(lcm%a==0 && lcm%b==0)break;
+//         lcm++;
+//     }
+//     printf("%d",lcm);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int arr[]={3,6,4,8,9,15,5};
+//     int max=arr[0];
+//     int smax=arr[1];
+//     if(smax>max)
+//     {
+//         int t=max;
+//         max=smax;
+//         smax=t;
+//     }
+//     for(int i=2;i<7;i++)
+//     {
+//         if(arr[i]>max)
+//         {
+//             int t=max;
+//             max=arr[i];
+//             smax=t;
+//         }
+//         else if(arr[i]<max && arr[i]>smax)
+//         {
+//             smax=arr[i];
+//         }
+//     }
+//     printf("Max element %d\nSecond Max element %d",max,smax);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int d=0;
+//     int a[]={5,7,3,6,4,5,6,7,8};
+//     for(int i=0;i<9;i++)
+//     {
+//         for(int j=0;j<i;j++)
+//         {
+//             if(a[i]==a[j]) d=1;
+//         }
+//         if(!d)
+//         printf("%d ",a[i]);
+//     }
+// }

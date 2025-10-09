@@ -1268,7 +1268,7 @@ int main()
 // int **takematrix(int rows,int columns)
 // {
 //     int **matrix;
-//     matrix=(int**)malloc(rows*sizeof(int));
+//     matrix=(int**)malloc(rows*sizeof(int*));
 //     for(int i=0;i<rows;i++)
 //     {
 //         *(matrix+i)=(int*)malloc(columns*sizeof(int));
@@ -2659,33 +2659,117 @@ int main()
 //     return 0;
 // }
 
+// #include<stdio.h>
+// #include<string.h>
+
+// char *strtoks(char *s,const char *delim)
+// {
+//     static char *gstr;
+//     if(s!=NULL)gstr=s;
+//     if(gstr==NULL || *gstr=='\0')return NULL;
+//     char *start=gstr;
+//     while(*gstr && !(strchr(delim,*gstr)))gstr++;
+//     if(*gstr)
+//     {
+//         *gstr='\0';
+//         gstr++;
+//     }
+//     return start;
+// }
+// int main()
+// {
+//     char str[]="You live;in.Bangleshdesh right?";
+//     char delim[]={'.',' ',';','\0'};
+//     char *t=strtoks(str,delim);
+//     while(t)
+//     {
+//         printf("%s\n",t);
+//         t=strtoks(NULL,delim);
+//     }
+//     return 0;
+// }
+
 #include<stdio.h>
 #include<string.h>
-
-char *strtoks(char *s,const char *delim)
+#include<stdlib.h>
+union restype{int mark;float cgpa};
+struct persontype
 {
-    static char *gstr;
-    if(s!=NULL)gstr=s;
-    if(gstr==NULL || *gstr=='\0')return NULL;
-    char *start=gstr;
-    while(*gstr && !(strchr(delim,*gstr)))gstr++;
-    if(*gstr)
-    {
-        *gstr='\0';
-        gstr++;
-    }
-    return start;
-}
-int main()
+    unsigned char bloodgroup:2;
+    unsigned char rhfactor:1;
+};
+enum tagtype{MARK,CGPA};
+char *tagnames[2]={"MARK","CGPA"};
+enum blood{A,B,AB,O};
+char *blood[4]={"A","B","AB","O"};
+enum rh{poistive,negative};
+char *rh[2]={"+","-"};
+struct student
 {
-    char str[]="You live;in.Bangleshdesh right?";
-    char delim[]={'.',' ',';','\0'};
-    char *t=strtoks(str,delim);
-    while(t)
+    char *name;
+    int roll;
+    union restype result;
+    struct persontype person;
+    enum tagtype tag;
+};
+int findcode(char *s,char **str,int n)
+{
+    for(int i=0;i<n;i++)
     {
-        printf("%s\n",t);
-        t=strtoks(NULL,delim);
+        if(strcmp(s,str[i])==0)return i;
     }
     return 0;
 }
-
+void getstruct(struct student *s)
+{
+    s->name=(char*)malloc(31*sizeof(char));
+    printf("\nEnter student's name : ");
+    scanf("%s",s->name);
+    printf("\nEnter roll number : ");
+    scanf("%d",&s->roll);
+    char str[10];
+    printf("\nEnter mark system : ");
+    scanf("%s",str);
+    s->tag=findcode(str,tagnames,2);
+    if(s->tag==MARK){
+        printf("Enter the mark for the student : ");
+        scanf("%d",&s->result.mark);
+    }
+    else
+    {
+        printf("Enter the cgpa for the student : ");
+        scanf("%f",&s->result.cgpa);
+    }
+    char bloods[10];
+    printf("\nEnter the bloodgroup : ");
+    scanf("%s",bloods);
+    s->person.bloodgroup=findcode(bloods,blood,4);
+    char rhfactor[10];
+    printf("\nEnter rh factor");
+    scanf("%s",rhfactor);
+    s->person.rhfactor=findcode(rhfactor,rh,2);
+}
+void initstruct(struct student t)
+{
+        char *t=(char*)malloc(31*sizeof(char));
+}
+void copy(struct student *a,struct student *b)
+{
+    strcpy(a->name,b->name);
+    a->roll=b->roll;
+    if(a->tag==MARK)a->result.mark=b->result.mark;
+    else a->result.cgpa=b->result.cgpa;
+    a->person.bloodgroup=b->person.bloodgroup;
+    a->person.rhfactor=b->person.rhfactor;
+}
+void freStruct(struct student* a){
+    free(a->name);
+}
+void printstruct(struct student a)
+{
+    printf("\nRoll %d",a.roll);
+    if(a.tag==MARK)
+    printf(" Mark: %d",a.result.mark);
+    else printf(" CGPA: %.2f",a.result.cgpa);
+    printf(" Bloodgroup : %s%s",blood[a.person.bloodgroup],rh[a.person.rhfactor]);
+}

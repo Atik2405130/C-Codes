@@ -2689,87 +2689,192 @@ int main()
 //     return 0;
 // }
 
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-union restype{int mark;float cgpa};
-struct persontype
-{
-    unsigned char bloodgroup:2;
-    unsigned char rhfactor:1;
-};
-enum tagtype{MARK,CGPA};
-char *tagnames[2]={"MARK","CGPA"};
-enum blood{A,B,AB,O};
-char *blood[4]={"A","B","AB","O"};
-enum rh{poistive,negative};
-char *rh[2]={"+","-"};
-struct student
-{
-    char *name;
-    int roll;
-    union restype result;
-    struct persontype person;
-    enum tagtype tag;
-};
-int findcode(char *s,char **str,int n)
-{
-    for(int i=0;i<n;i++)
-    {
-        if(strcmp(s,str[i])==0)return i;
-    }
-    return 0;
-}
-void getstruct(struct student *s)
-{
-    s->name=(char*)malloc(31*sizeof(char));
-    printf("\nEnter student's name : ");
-    scanf("%s",s->name);
-    printf("\nEnter roll number : ");
-    scanf("%d",&s->roll);
-    char str[10];
-    printf("\nEnter mark system : ");
-    scanf("%s",str);
-    s->tag=findcode(str,tagnames,2);
-    if(s->tag==MARK){
-        printf("Enter the mark for the student : ");
-        scanf("%d",&s->result.mark);
-    }
-    else
-    {
-        printf("Enter the cgpa for the student : ");
-        scanf("%f",&s->result.cgpa);
-    }
-    char bloods[10];
-    printf("\nEnter the bloodgroup : ");
-    scanf("%s",bloods);
-    s->person.bloodgroup=findcode(bloods,blood,4);
-    char rhfactor[10];
-    printf("\nEnter rh factor");
-    scanf("%s",rhfactor);
-    s->person.rhfactor=findcode(rhfactor,rh,2);
-}
-void initstruct(struct student t)
-{
-        char *t=(char*)malloc(31*sizeof(char));
-}
-void copy(struct student *a,struct student *b)
-{
-    strcpy(a->name,b->name);
-    a->roll=b->roll;
-    if(a->tag==MARK)a->result.mark=b->result.mark;
-    else a->result.cgpa=b->result.cgpa;
-    a->person.bloodgroup=b->person.bloodgroup;
-    a->person.rhfactor=b->person.rhfactor;
-}
-void freStruct(struct student* a){
-    free(a->name);
-}
-void printstruct(struct student a)
-{
-    printf("\nRoll %d",a.roll);
-    if(a.tag==MARK)
-    printf(" Mark: %d",a.result.mark);
-    else printf(" CGPA: %.2f",a.result.cgpa);
-    printf(" Bloodgroup : %s%s",blood[a.person.bloodgroup],rh[a.person.rhfactor]);
-}
+// #include<stdio.h>
+// #include<string.h>
+// #include<stdlib.h>
+// union restype{int mark;float cgpa;};
+// struct persontype
+// {
+//     unsigned char bloodgroup:2;
+//     unsigned char rhfactor:1;
+// };
+// enum tagtype{MARK,CGPA};
+// char *tagnames[2]={"MARK","CGPA"};
+// enum blood{A,B,AB,O};
+// char *blood[4]={"A","B","AB","O"};
+// enum rh{poistive,negative};
+// char *rh[2]={"+","-"};
+// struct student
+// {
+//     char *name;
+//     int roll;
+//     union restype result;
+//     struct persontype person;
+//     enum tagtype tag;
+// };
+// int findcode(char *s,char **str,int n)
+// {
+//     for(int i=0;i<n;i++)
+//     {
+//         if(strcmp(s,str[i])==0)return i;
+//     }
+//     return 0;
+// }
+// void getstruct(struct student *s)
+// {
+//     s->name=(char*)malloc(31*sizeof(char));
+//     printf("\nEnter student's name : ");
+//     scanf("%s",s->name);
+//     printf("\nEnter roll number : ");
+//     scanf("%d",&s->roll);
+//     char str[10];
+//     printf("\nEnter mark system : ");
+//     scanf("%s",str);
+//     s->tag=findcode(str,tagnames,2);
+//     if(s->tag==MARK){
+//         printf("Enter the mark for the student : ");
+//         scanf("%d",&s->result.mark);
+//     }
+//     else
+//     {
+//         printf("Enter the cgpa for the student : ");
+//         scanf("%f",&s->result.cgpa);
+//     }
+//     char bloods[10];
+//     printf("\nEnter the bloodgroup : ");
+//     scanf("%s",bloods);
+//     s->person.bloodgroup=findcode(bloods,blood,4);
+//     char rhfactor[10];
+//     printf("\nEnter rh factor");
+//     scanf("%s",rhfactor);
+//     s->person.rhfactor=findcode(rhfactor,rh,2);
+// }
+// void initstruct(struct student *t)
+// {
+//         t->name=(char*)malloc(31*sizeof(char));
+// }
+// void copy(struct student *a,struct student *b)
+// {
+//     strcpy(a->name,b->name);
+//     a->roll=b->roll;
+//     if(a->tag==MARK)a->result.mark=b->result.mark;
+//     else a->result.cgpa=b->result.cgpa;
+//     a->person.bloodgroup=b->person.bloodgroup;
+//     a->person.rhfactor=b->person.rhfactor;
+// }
+// void freStruct(struct student* a){
+//     free(a->name);
+// }
+// void printstruct(struct student a)
+// {
+//     printf("\nRoll %d",a.roll);
+//     if(a.tag==MARK)
+//     printf(" Mark: %d",a.result.mark);
+//     else printf(" CGPA: %.2f",a.result.cgpa);
+//     printf(" Bloodgroup : %s%s",blood[a.person.bloodgroup],rh[a.person.rhfactor]);
+// }
+// int main()
+// {
+//     int n;
+//     printf("How many students are there? : ");
+//     scanf("%d",&n);
+//     struct student a[n];
+//     for(int i=0;i<3;i++)
+//     {
+//         initstruct(&a[i]);
+//         getstruct(&a[i]);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         printstruct(a[i]);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=i+1;j<n;j++)
+//         {
+//             if(a[j].roll<a[i].roll)
+//             {
+//                 struct student t;
+//                 initstruct(&t);
+//                 copy(&t,&a[i]);
+//                 copy(&a[i],&a[j]);
+//                 copy(&a[j],&t);
+//                 freStruct(&t);
+//             }
+//         }
+//     }
+//     for (int i=0;i<n;i++){
+//         printstruct(a[i]);
+//     }
+//     for (int i=0;i<n;i++){
+//         freStruct(&a[i]);
+//     }
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int n;
+//     scanf("%d",&n);
+//     int arr[n];
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d",&arr[i]);
+//     }
+//     int u=0,sa=0,sd=0;
+//     for(int i=0;i<n-1;i++)
+//     {
+//         for(int j=i+1;j<n;j++)
+//         {
+//             if(arr[j]>=arr[i])
+//             sa=1;
+//             else sa=0;
+//             if(arr[j]<=arr[i])
+//             sd=1;
+//             else sd=0;
+//         }
+//     }
+//     if(sa==1)printf("Sorted and A");
+//     else if(sd==1)printf("Sorted and D");
+//     else printf("U");
+// }
+
+// #include<stdio.h>
+// int main(){
+//     int n;
+//     scanf("%d",&n);
+//     int arr[n];
+//     int isAsc=1,isDec=1;
+//     for(int i=0;i<n;i++)scanf("%d",&arr[i]);
+//     for(int i=0;i<n-1;i++)
+//     {
+//         if(arr[i]>=arr[i+1])isAsc=0;
+//         if(arr[i]<=arr[i+1])isDec=0;
+//     }
+//     if(isAsc)printf("Sorted and A");
+//     else if(isDec)printf("Unsorted and D");
+//     else printf("U");
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int x=20,y=10,z=0;
+//     int a=x && !y||z;
+//     int b=x++*-y+!z;
+//     printf("%d\n%d",a,b);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int i;
+//     scanf("%d",&i);
+//     if(++i)
+//     {
+//         int i=50;
+//         printf("%d\n",i++);
+//     }
+//     printf("%d\n",i);
+// }

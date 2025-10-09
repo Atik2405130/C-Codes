@@ -2878,3 +2878,71 @@ int main()
 //     }
 //     printf("%d\n",i);
 // }
+
+// #include<stdio.h>
+// int calculateHindex(int C[],int N)
+// {
+//     //int arr[]={9,5,4,2,1};
+//     int h=0;
+//     for(int i=0;i<N;i++)
+//     {
+//         if(C[i]>(i+1))h=i+1;
+//     }
+//     return h;
+// }
+// int main()
+// {
+//     int arr[]={9,5,4,2,1};
+//     int result=calculateHindex(arr,5);
+//     printf("%d",result);
+// }
+
+// #include<stdio.h>
+// struct student
+// {
+//     char name[30];
+//     int roll;
+//     float cgpa;
+// };
+// int main()
+// {
+//     struct student a;
+//     int x=sizeof(a);
+//     printf("%d",x);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int n,m; //n->row,m->column
+//     scanf("%d%d",&n,&m);
+//     int array[n][m];
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<m;j++)
+//         {
+//             scanf("%d",&array[i][j]);
+//         }
+//     }
+//     int total;
+//     int max;
+//     for(int i=0;i<n;i++)
+//     {
+//         total=0;
+//         for(int j=0;j<m;j++)
+//         {
+//             total+=array[i][j];
+//         }
+//         printf("Total number for student %d is %d\n",i+1,total);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         max=array[0][i];
+//         for(int j=0;j<m;j++)
+//         {
+//             if(array[j][i]>max)max=array[j][i];
+//         }
+//         printf("Maximum number for subject %d is %d\n",i+1,max);
+//     }
+// }
+

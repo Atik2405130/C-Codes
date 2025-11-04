@@ -2877,5 +2877,181 @@ int main()
 //         printf("%d\n",i++);
 //     }
 //     printf("%d\n",i);
+<<<<<<< HEAD
 // 
 // RAHUL THE GREAT RAHUL THE GREAT 
+=======
+// }
+
+// #include<stdio.h>
+// int calculateHindex(int C[],int N)
+// {
+//     //int arr[]={9,5,4,2,1};
+//     int h=0;
+//     for(int i=0;i<N;i++)
+//     {
+//         if(C[i]>(i+1))h=i+1;
+//     }
+//     return h;
+// }
+// int main()
+// {
+//     int arr[]={9,5,4,2,1};
+//     int result=calculateHindex(arr,5);
+//     printf("%d",result);
+// }
+
+// #include<stdio.h>
+// struct student
+// {
+//     char name[30];
+//     int roll;
+//     float cgpa;
+// };
+// int main()
+// {
+//     struct student a;
+//     int x=sizeof(a);
+//     printf("%d",x);
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int n,m; //n->row,m->column
+//     scanf("%d%d",&n,&m);
+//     int array[n][m];
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<m;j++)
+//         {
+//             scanf("%d",&array[i][j]);
+//         }
+//     }
+//     int total;
+//     int max;
+//     for(int i=0;i<n;i++)
+//     {
+//         total=0;
+//         for(int j=0;j<m;j++)
+//         {
+//             total+=array[i][j];
+//         }
+//         printf("Total number for student %d is %d\n",i+1,total);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         max=array[0][i];
+//         for(int j=0;j<m;j++)
+//         {
+//             if(array[j][i]>max)max=array[j][i];
+//         }
+//         printf("Maximum number for subject %d is %d\n",i+1,max);
+//     }
+// }
+
+// #include<stdio.h>
+// int main()
+// {
+//     int n,x;
+//     printf("Degree? : ");
+//     scanf("%d",&n);
+//     printf("Enter value of X : ");
+//     scanf("%d",&x);
+//     int arr[n+1];
+//     printf("Enter the coefficients : ");
+//     for(int i=0;i<(n+1);i++)
+//     {
+//         scanf("%d",&arr[i]);
+//     }
+//     float sum=arr[n];
+//     for(int i=n-1;i>=0;i--)
+//     {
+//         sum=sum*x+arr[i];
+//     }
+//     printf("%f",sum);
+// }
+
+// #include<stdio.h>
+// void insert(int a[],int e,int idx,int N)
+// {
+//     for(int i=N;i>idx;i--)
+//     {
+//         a[i]=a[i-1];
+//     }
+//     a[idx]=e;
+// }
+
+// #include<stdio.h>
+
+// int *square(int x)
+// {
+//     int result=x*x;
+//     return &result;
+// }
+// int main()
+// {
+//     int a=10;
+//     int *p;
+//     p=sqaure(a);
+//     printf("%d",*p);
+//     return 0;
+// }
+
+// #include<stdio.h>
+// #include<stdlib.h>
+// int main()
+// {
+//     int m,r,c;
+//     scanf("%d%d%d",&m,&r,&c);
+//     int ***array;
+//     array=(int***)malloc(m*sizeof(int**));
+//     for(int i=0;i<m;i++)
+//     {
+//         *(array+i)=(int**)malloc(r*sizeof(int*));
+//         for(int j=0;j<r;j++)
+//         {
+//             *(*(array+i)+j)=(int*)malloc(c*sizeof(int));
+//         }
+//     }
+// }
+
+// #include<stdio.h>
+// int countMinBits(int n)
+// {
+//     int count=0;
+//     while(n>0)
+//     {
+//         count++;
+//         n>>=1;
+//     }
+//     return count;
+// }
+// int findTrailingZeros(int n)
+// {
+//     int count=0;
+//     unsigned m=1;
+//     while(1)
+//     {
+//         if(!(n&m))
+//         {
+//             count++;
+//             n>>=1;
+//         }
+//         else break;
+//     }
+//     return count;
+// }
+// int allRepeated(int x)
+// {
+//     int d1,d2;
+//     while(x!=0)
+//     {
+//         d1=x%10;
+//         d2=x%100;
+//         if(d1^d2)return 0;
+//         else x/=100;
+//     }
+//     return 1;
+// }
+>>>>>>> cecd48eefb1b6a258a3af73ecd2de84520c04483

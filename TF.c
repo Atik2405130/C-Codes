@@ -2877,10 +2877,7 @@ int main()
 //         printf("%d\n",i++);
 //     }
 //     printf("%d\n",i);
-<<<<<<< HEAD
 // 
-// RAHUL THE GREAT RAHUL THE GREAT 
-=======
 // }
 
 // #include<stdio.h>
@@ -3054,4 +3051,3 @@ int main()
 //     }
 //     return 1;
 // }
->>>>>>> cecd48eefb1b6a258a3af73ecd2de84520c04483
